@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="PROJECT" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="logs/logger-service.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c{10}] - %m%n" />
+		</layout>
+	</appender>
+
+	<!--输出到控制台 -->
+	<appender name="LOG.Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyy-MM-dd HH:mm:ss} [%-5p] %c:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 输出mybatis sql 语句 -->
+	<!-- <logger name="com.ibatis" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.ibatis.common.jdbc.SimpleDataSource" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.ibatis.common.jdbc.ScriptRunner" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="org.mybatis" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Connection" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.Statement" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.PreparedStatement" additivity="true">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.ResultSet" additivity="true">
+		<level value="DEBUG" />
+	</logger> -->
+	<root>
+		<level value="info" /><!-- 环境部署时，修改为 info -->
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="LOG.Console" />
+	</root>
+</log4j:configuration>

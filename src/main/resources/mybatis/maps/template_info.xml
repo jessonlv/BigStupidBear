@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.lv.service.dao.TemplateDao">
+	
+	<select id="getMessageList" resultType="MessagePo"> <!-- AND Language = #{language} 适当时候可以添加区分语言 -->
+		SELECT * FROM im_message  WHERE Sender = #{sender}  AND Receiver = #{receiver} AND Status = 2 ORDER BY CreateTime DESC limit #{startIndex},#{rows}
+	</select>
+
+	
+	<!-- 1 未已读  -->
+<!-- 	<update id="setReaded"  parameterType="java.util.List">
+      
+          <foreach collection="list" item="poList" index="index" open="" close="" separator=";">
+                update notification_info 
+                <set>
+                  Status = 1 
+                </set>
+                where ID = ${poList.ID}
+         </foreach>
+          
+    </update> -->
+	
+</mapper>
